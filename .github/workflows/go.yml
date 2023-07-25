@@ -1,0 +1,32 @@
+name: Go
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+    branches: [ "main", "dev" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: "1.20.x"
+
+    # Add Redis installation and setup steps
+    - name: Install Redis
+      run: sudo apt-get install redis-server -y
+
+    - name: Start Redis
+      run: redis-server --port 6379 &
+
+    - name: Wait for Redis to start
+      run: sleep 5
+
+    - name: Test
+      run: go test -v ./...
