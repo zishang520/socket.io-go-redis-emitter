@@ -19,7 +19,7 @@ const (
 )
 
 type Parser interface {
-	Encoder(any) ([]byte, error)
+	Encode(any) ([]byte, error)
 }
 
 type BroadcastOptions struct {

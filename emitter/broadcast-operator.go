@@ -128,7 +128,7 @@ func (b *BroadcastOperator) Emit(ev string, args ...any) error {
 		Flags:  b.flags,
 	}
 
-	msg, err := b.broadcastOptions.Parser.Encoder([]any{UID, packet, opts})
+	msg, err := b.broadcastOptions.Parser.Encode([]any{UID, packet, opts})
 	if err != nil {
 		return nil
 	}

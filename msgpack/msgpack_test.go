@@ -8,28 +8,28 @@ import (
 func TestEmitterOptions(t *testing.T) {
 	pack := New()
 
-	t.Run("Encoder/Decoder", func(t *testing.T) {
-		data, err := pack.Encoder([]any{[]byte{1, 2, 3, 4}, 0, 4, nil})
+	t.Run("Encode/Decode", func(t *testing.T) {
+		data, err := pack.Encode([]any{[]byte{1, 2, 3, 4}, 0, 4, nil})
 		if err != nil {
-			t.Fatal("Encoder error must be nil")
+			t.Fatal("Encode error must be nil")
 		}
 		check := []byte{148, 196, 4, 1, 2, 3, 4, 0, 4, 192}
 		if !bytes.Equal(data, check) {
-			t.Fatalf(`Encoder value not as expected: %v, want match for %v`, data, check)
+			t.Fatalf(`Encode value not as expected: %v, want match for %v`, data, check)
 		}
 		var value any
-		err = pack.Decoder(data, &value)
+		err = pack.Decode(data, &value)
 		if err != nil {
-			t.Fatal("Decoder error must be nil")
+			t.Fatal("Decode error must be nil")
 		}
 		if d, ok := value.([]any); !ok {
-			t.Fatal("Decoder value must be []any")
+			t.Fatal("Decode value must be []any")
 		} else {
 			if n := len(d); n != 4 {
-				t.Fatalf(`Decoder len(value) not as expected: %v, want match for %v`, 4, n)
+				t.Fatalf(`Decode len(value) not as expected: %v, want match for %v`, 4, n)
 			}
 			if d[3] != nil {
-				t.Fatalf(`Decoder value[3] not as expected: %v, want match for %v`, nil, d[3])
+				t.Fatalf(`Decode value[3] not as expected: %v, want match for %v`, nil, d[3])
 			}
 		}
 	})
