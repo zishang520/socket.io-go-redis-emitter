@@ -6,16 +6,16 @@ import (
 
 const UID = "emitter"
 
-type RequestType byte
+type RequestType int
 
 const (
-	SOCKETS           RequestType = '0'
-	ALL_ROOMS         RequestType = '1'
-	REMOTE_JOIN       RequestType = '2'
-	REMOTE_LEAVE      RequestType = '3'
-	REMOTE_DISCONNECT RequestType = '4'
-	REMOTE_FETCH      RequestType = '5'
-	SERVER_SIDE_EMIT  RequestType = '6'
+	SOCKETS           RequestType = 0x0
+	ALL_ROOMS         RequestType = 0x1
+	REMOTE_JOIN       RequestType = 0x2
+	REMOTE_LEAVE      RequestType = 0x3
+	REMOTE_DISCONNECT RequestType = 0x4
+	REMOTE_FETCH      RequestType = 0x5
+	SERVER_SIDE_EMIT  RequestType = 0x6
 )
 
 type Parser interface {
