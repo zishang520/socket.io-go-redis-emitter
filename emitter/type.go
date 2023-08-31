@@ -29,15 +29,10 @@ type BroadcastOptions struct {
 	Parser           Parser
 }
 
-type BroadcastFlags struct {
-	Volatile bool `json:"volatile,omitempty" msgpack:"volatile,omitempty"`
-	Compress bool `json:"compress,omitempty" msgpack:"compress,omitempty"`
-}
-
 type PacketOptions struct {
-	Rooms  []socket.Room   `json:"rooms,omitempty" msgpack:"rooms,omitempty"`
-	Except []socket.Room   `json:"except,omitempty" msgpack:"except,omitempty"`
-	Flags  *BroadcastFlags `json:"flags,omitempty" msgpack:"flags,omitempty"`
+	Rooms  []socket.Room          `json:"rooms,omitempty" mapstructure:"rooms,omitempty" msgpack:"rooms,omitempty"`
+	Except []socket.Room          `json:"except,omitempty" mapstructure:"except,omitempty" msgpack:"except,omitempty"`
+	Flags  *socket.BroadcastFlags `json:"flags,omitempty" mapstructure:"except,omitempty" msgpack:"flags,omitempty"`
 }
 
 type Packet struct {

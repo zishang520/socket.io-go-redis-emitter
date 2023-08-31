@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/redis/go-redis/v9"
-	"github.com/zishang520/socket.io-go-redis-emitter/msgpack"
+	"github.com/zishang520/engine.io/utils"
 )
 
 func TestEmitterOptions(t *testing.T) {
@@ -107,7 +107,7 @@ func TestBroadcastOperator(t *testing.T) {
 		Nsp:              "",
 		BroadcastChannel: "",
 		RequestChannel:   "",
-		Parser:           msgpack.New(),
+		Parser:           utils.MsgPack(),
 	}, nil, nil, nil)
 
 	t.Run("Emit", func(t *testing.T) {

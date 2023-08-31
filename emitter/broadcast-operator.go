@@ -29,11 +29,11 @@ type BroadcastOperator struct {
 	broadcastOptions *BroadcastOptions
 	rooms            *types.Set[socket.Room]
 	exceptRooms      *types.Set[socket.Room]
-	flags            *BroadcastFlags
+	flags            *socket.BroadcastFlags
 	ctx              context.Context
 }
 
-func NewBroadcastOperator(redisClient *redis.Client, broadcastOptions *BroadcastOptions, rooms *types.Set[socket.Room], exceptRooms *types.Set[socket.Room], flags *BroadcastFlags) *BroadcastOperator {
+func NewBroadcastOperator(redisClient *redis.Client, broadcastOptions *BroadcastOptions, rooms *types.Set[socket.Room], exceptRooms *types.Set[socket.Room], flags *socket.BroadcastFlags) *BroadcastOperator {
 	if redisClient == nil {
 		panic("redisClient must not be nil")
 	}
@@ -60,7 +60,7 @@ func NewBroadcastOperator(redisClient *redis.Client, broadcastOptions *Broadcast
 	}
 
 	if flags == nil {
-		b.flags = &BroadcastFlags{}
+		b.flags = &socket.BroadcastFlags{}
 	} else {
 		b.flags = flags
 	}

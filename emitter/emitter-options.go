@@ -1,6 +1,8 @@
 package emitter
 
-import "github.com/zishang520/socket.io-go-redis-emitter/msgpack"
+import (
+	"github.com/zishang520/engine.io/utils"
+)
 
 type EmitterOptionsInterface interface {
 	SetKey(key string)
@@ -61,7 +63,7 @@ func (s *EmitterOptions) GetRawParser() Parser {
 }
 func (s *EmitterOptions) Parser() Parser {
 	if s.parser == nil {
-		return msgpack.New()
+		return utils.MsgPack()
 	}
 
 	return s.parser
