@@ -9,13 +9,13 @@ const UID = "emitter"
 type RequestType int
 
 const (
-	SOCKETS           RequestType = 0x0
-	ALL_ROOMS         RequestType = 0x1
-	REMOTE_JOIN       RequestType = 0x2
-	REMOTE_LEAVE      RequestType = 0x3
-	REMOTE_DISCONNECT RequestType = 0x4
-	REMOTE_FETCH      RequestType = 0x5
-	SERVER_SIDE_EMIT  RequestType = 0x6
+	REQUEST_SOCKETS RequestType = iota
+	REQUEST_ALL_ROOMS
+	REQUEST_REMOTE_JOIN
+	REQUEST_REMOTE_LEAVE
+	REQUEST_REMOTE_DISCONNECT
+	REQUEST_REMOTE_FETCH
+	REQUEST_SERVER_SIDE_EMIT
 )
 
 type Parser interface {

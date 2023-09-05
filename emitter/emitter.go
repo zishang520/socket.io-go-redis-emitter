@@ -117,7 +117,7 @@ func (e *Emitter) ServerSideEmit(args ...any) error {
 	}
 	request, err := json.Marshal(&Packet{
 		Uid:  UID,
-		Type: SERVER_SIDE_EMIT,
+		Type: REQUEST_SERVER_SIDE_EMIT,
 		Data: args,
 	})
 	if err != nil {

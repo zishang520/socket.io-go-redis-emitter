@@ -146,7 +146,7 @@ func (b *BroadcastOperator) Emit(ev string, args ...any) error {
 // Makes the matching socket instances join the specified rooms
 func (b *BroadcastOperator) SocketsJoin(room ...socket.Room) {
 	request, err := json.Marshal(&Packet{
-		Type: REMOTE_JOIN,
+		Type: REQUEST_REMOTE_JOIN,
 		Opts: &PacketOptions{
 			Rooms:  b.rooms.Keys(),
 			Except: b.exceptRooms.Keys(),
@@ -162,7 +162,7 @@ func (b *BroadcastOperator) SocketsJoin(room ...socket.Room) {
 // Makes the matching socket instances leave the specified rooms
 func (b *BroadcastOperator) SocketsLeave(room ...socket.Room) {
 	request, err := json.Marshal(&Packet{
-		Type: REMOTE_LEAVE,
+		Type: REQUEST_REMOTE_LEAVE,
 		Opts: &PacketOptions{
 			Rooms:  b.rooms.Keys(),
 			Except: b.exceptRooms.Keys(),
@@ -178,7 +178,7 @@ func (b *BroadcastOperator) SocketsLeave(room ...socket.Room) {
 // Makes the matching socket instances disconnect
 func (b *BroadcastOperator) DisconnectSockets(state bool) {
 	request, err := json.Marshal(&Packet{
-		Type: REMOTE_DISCONNECT,
+		Type: REQUEST_REMOTE_DISCONNECT,
 		Opts: &PacketOptions{
 			Rooms:  b.rooms.Keys(),
 			Except: b.exceptRooms.Keys(),
